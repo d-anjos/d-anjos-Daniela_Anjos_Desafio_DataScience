@@ -1,35 +1,28 @@
-﻿# Documentação do Projeto – Desafio de Data Science
-
+# Documentação do Projeto – Desafio de Data Science
 
 **Autor:** Daniela dos Anjos  
 **Data:** maio/2026  
 **Curso:** Introdução ao Data Science – Carreira Tech (SCTEC)  
-**Dataset:** Sample_Superstore.csv (fonte: Kaggle)
-**Contato:** oidanianjos@gmail.com
-**LinkedIn:** https://www.linkedin.com/in/daniela-anjos/
-**GitHub:** https://github.com/d-anjos/
-
+**Dataset:** Sample_Superstore.csv (fonte: Kaggle)  
+**Contato:** oidanianjos@gmail.com  
+**LinkedIn:** [https://www.linkedin.com/in/daniela-anjos/](https://www.linkedin.com/in/daniela-anjos/)  
+**GitHub:** [https://github.com/d-anjos/](https://github.com/d-anjos/)
 
 ---
 
-
 ## 1. Descrição das Etapas de Desenvolvimento
-
 
 O projeto seguiu o fluxo típico de uma análise exploratória de dados (AED), conforme descrito a seguir:
 
-
 1. **Importação e configuração do ambiente**  
-   - Carregamento das bibliotecas pandas, numpy, matplotlib e seaborn, sendo a primeira para manipulação e limpeza de dados a segunda para cálculos e operações e as duas últimas para criação e visualização de gráficos.
+   - Carregamento das bibliotecas pandas, numpy, matplotlib e seaborn, sendo a primeira para manipulação e limpeza de dados a segunda para cálculos e operações e as duas últimas para criação e visualização de gráficos.  
    - Importação do dataset via upload manual no Google Colab (arquivo `Sample_Superstore.csv`).
-
 
 2. **Exploração inicial dos dados**  
    - Visualização das primeiras e últimas linhas (`head` e `tail`).  
    - Verificação do formato (9994 linhas, 21 colunas).  
    - Análise dos tipos de dados (`df.info()`) e geração de estatísticas descritivas (`df.describe()`).  
    - Listagem de todas as colunas originais.
-
 
 3. **Tratamento e preparação dos dados**  
    - Verificação de valores nulos (não havia).  
@@ -40,7 +33,6 @@ O projeto seguiu o fluxo típico de uma análise exploratória de dados (AED), c
    - Renomeação de todas as colunas para português, a fim de tornar o notebook mais legível.  
    - Identificação de outliers nas métricas de vendas e lucro utilizando o método do Intervalo Interquartil (IQR), com geração de boxplots.
 
-
 4. **Análise exploratória de dados (EDA)**  
    - Distribuição de vendas por segmento de cliente (gráfico de pizza).  
    - Sazonalidade das vendas por segmento ao longo do tempo (gráfico de linhas).  
@@ -48,109 +40,91 @@ O projeto seguiu o fluxo típico de uma análise exploratória de dados (AED), c
    - Vendas e lucro totais por categoria e subcategoria (gráficos de barras).  
    - Análise temporal de vendas por categoria.  
    - Identificação de subcategorias com lucro negativo (Tables, Bookcases, Supplies).  
-   - Identificação das subcategorias com rentabilidade desproporcional às vendas.
+   - Identificação das subcategorias com rentabilidade desproporcional às vendas.  
    - Impacto do desconto no lucro geral e por subcategoria (gráficos de dispersão).  
    - Top 10 clientes por lucro total.  
    - Rentabilidade por modo de envio (lucro total e lucro médio).
 
-
 ---
-
 
 ## 2. Principais Decisões Tomadas Durante o Tratamento dos Dados
 
-
-- **Nulos e duplicatas:** Nenhum valor ausente ou duplicado foi encontrado, portanto não houve necessidade de exclusão ou preenchimento.
-- **Conversão de tipos:** `Order ID`, `Customer ID` e `Postal Code` foram convertidos para string por serem identificadores e não valores numéricos. As datas foram convertidas para datetime e, a partir delas, foram extraídos mês e ano para enriquecer as análises temporais.
-- **Tradução das colunas:** Optou-se por manter as etapas de exploração com nomes originais e realizar a tradução apenas na fase de tratamento, refletindo o processo real de aprendizagem, onde primeiro se conhece o dado bruto e depois se organiza.
-- **Tratamento de outliers:** Foram identificados outliers nas variáveis `vendas` e `lucro` utilizando o método IQR (1,5x). Decidiu-se **não removê-los**, pois representam transações reais e sua exclusão poderia introduzir um viés analítico. Apenas foram adicionadas linhas de referência nos boxplots para destacar os limites.
-- **Código comentado:** Manteve-se parte do código comentado como registro do processo de aprendizado e das possibilidades testadas durante o desenvolvimento, como formas alternativas de remoção de duplicatas e filtros extremos. Esta é uma prática apenas didática que não compromete a execução do notebook.
+- **Nulos e duplicatas:** Nenhum valor ausente ou duplicado foi encontrado, portanto não houve necessidade de exclusão ou preenchimento.  
+- **Conversão de tipos:** `Order ID`, `Customer ID` e `Postal Code` foram convertidos para string por serem identificadores e não valores numéricos. As datas foram convertidas para datetime e, a partir delas, foram extraídos mês e ano para enriquecer as análises temporais.  
+- **Tradução das colunas:** Optou-se por manter as etapas de exploração com nomes originais e realizar a tradução apenas na fase de tratamento, refletindo o processo real de aprendizagem, onde primeiro se conhece o dado bruto e depois se organiza.  
+- **Tratamento de outliers:** Foram identificados outliers nas variáveis `vendas` e `lucro` utilizando o método IQR (1,5x). Decidiu-se **não removê-los**, pois representam transações reais e sua exclusão poderia introduzir um viés analítico. Apenas foram adicionadas linhas de referência nos boxplots para destacar os limites.  
+- **Código comentado:** Manteve-se parte do código comentado como registro do processo de aprendizado e das possibilidades testadas durante o desenvolvimento, como formas alternativas de remoção de duplicatas e filtros extremos. Esta é uma prática apenas didática que não compromete a execução do notebook.  
 - **Gráfico de vendas e lucro no mesmo eixo Y:** Propositalmente utilizado para tornar visualmente evidente a grande diferença de escala entre as duas métricas, reforçando a análise de que o crescimento em vendas não é acompanhado proporcionalmente pelo lucro.
 
-
 ---
-
 
 ## 3. Principais Insights Obtidos
 
-
-1. **Tecnologia é a categoria líder em vendas**, *Furniture* (Móveis) aparece em segundo lugar, mas apresenta margens de lucro baixa. Mesmo em terceiro lugar em vendas *Office Supplies* (Material de Escritório) gera o lucro maior do que *Furniture*, evidenciando a baixa rentabilidade de *Furniture*. Com isso se sugere revisar os custos da categoria *Furniture*, especialmente os custos de logística, visto que tendem a ser produtos com um volume grande. 
-2. **Descontos acima de 20% estão fortemente associados a prejuízo.** A dispersão mostra que a lucratividade cai rapidamente a partir desse patamar, e as subcategorias *Tables*, *Bookcases* e *Supplies* consistentemente operam gerando prejuízo.
-3. **Existe forte sazonalidade nas vendas**, com picos nos meses de novembro e dezembro, mas o lucro não cresce na mesma proporção, sugerindo aumento de custos ou descontos agressivos nesse período. É preciso avaliar custos e rever políticas de descontos.
-4. **O segmento Consumer domina em volume de vendas**, mas os segmentos Corporate e Home Office apresentam comportamento mais estável ao longo do tempo. É interessante pensar estratégias de promoção e fidelização de acordo com o perfil das categorias.
-5. **O modo de envio Standard Class responde pelo maior lucro total** por conta do volume), porém *First Class* tem o maior lucro médio por transação, sugerindo oportunidade de incentivar upgrades de frete.
+1. **Tecnologia é a categoria líder em vendas**, *Furniture* (Móveis) aparece em segundo lugar, mas apresenta margens de lucro baixa. Mesmo em terceiro lugar em vendas *Office Supplies* (Material de Escritório) gera lucro maior do que *Furniture*, evidenciando a baixa rentabilidade de *Furniture*. Com isso se sugere revisar os custos da categoria *Furniture*, especialmente os custos de logística, visto que tendem a ser produtos com um volume grande.  
+2. **Descontos acima de 20% estão fortemente associados a prejuízo.** A dispersão mostra que a lucratividade cai rapidamente a partir desse patamar, e as subcategorias *Tables*, *Bookcases* e *Supplies* consistentemente operam gerando prejuízo.  
+3. **Existe forte sazonalidade nas vendas**, com picos nos meses de novembro e dezembro, mas o lucro não cresce na mesma proporção, sugerindo aumento de custos ou descontos agressivos nesse período. É preciso avaliar custos e rever políticas de descontos.  
+4. **O segmento Consumer domina em volume de vendas**, mas os segmentos Corporate e Home Office apresentam comportamento mais estável ao longo do tempo. É interessante pensar estratégias de promoção e fidelização de acordo com o perfil das categorias.  
+5. **O modo de envio Standard Class responde pelo maior lucro total** (por conta do volume), porém *First Class* tem o maior lucro médio por transação, sugerindo oportunidade de incentivar upgrades de frete.  
 6. **A base de clientes é concentrada:** os 10 maiores clientes por lucro representam uma parcela significativa do resultado, indicando a importância de estratégias de retenção e fidelização.
 
-
 ---
-
 
 ## 4. Dashboard (Looker Studio / Data Studio)
 
-
-
-
-- **Link de acesso:** `[https://datastudio.google.com/reporting/7e2ca710-5de2-4466-9623-fcadd0ad8ff5]`
-- **Principais indicadores incluídos:**
-  - Total de vendas e lucro.
-  - Margem de lucro médio.
-  - Vendas por categoria e subcategoria.
-  - Desempenho por segmento e modo de envio.
+- **Link de acesso:** [https://datastudio.google.com/reporting/7e2ca710-5de2-4466-9623-fcadd0ad8ff5](https://datastudio.google.com/reporting/7e2ca710-5de2-4466-9623-fcadd0ad8ff5)  
+- **Principais indicadores incluídos:**  
+  - Total de vendas e lucro.  
+  - Margem de lucro médio.  
+  - Vendas por categoria e subcategoria.  
+  - Desempenho por segmento e modo de envio.  
   - Filtros interativos (período, categoria, segmento).
 
-
 ---
-
 
 ## 5. Versionamento no GitHub
 
-
-
-
-- **Link do repositório:** `[https://github.com/d-anjos/d-anjos-Daniela_Anjos_Desafio_DataScience]`
-- **Estrutura do repositório:**
-  - `notebook.ipynb` – código-fonte completo.
-  - `Sample_Superstore.csv` – dataset original.
-  - `*.png` – visualizações geradas.
-  - `*.pdf` – versão estática do dashboard gerado.
-  - `documentacao.md` – este arquivo.
+- **Link do repositório:** [https://github.com/d-anjos/d-anjos-Daniela_Anjos_Desafio_DataScience](https://github.com/d-anjos/d-anjos-Daniela_Anjos_Desafio_DataScience)  
+- **Estrutura do repositório:**  
+  - `notebook.ipynb` – código-fonte completo.  
+  - `Sample_Superstore.csv` – dataset original.  
+  - `*.png` – visualizações geradas.  
+  - `*.pdf` – versão estática do dashboard gerado.  
+  - `documentacao.md` – este arquivo.  
   - `README.md` – instruções rápidas.
-
 
 ---
 
-
 ## 6. Guia Rápido de Execução
 
-
-1. Acessar o notebook no Google Colab: `[https://colab.research.google.com/drive/1jOEQQIPmq-Xvv4X6w1gjWUOdwYNoikUK?usp=drive_link]`
-2. Fazer upload do arquivo `Sample_Superstore.csv` na primeira célula (ou, alternativamente, subir o arquivo no ambiente do Colab e ajustar o caminho).
-3. Executar as células sequencialmente (Ambiente de execução → Executar tudo).
-4. Os gráficos serão exibidos inline e salvos automaticamente como arquivos `.png` (necessário fazer download se desejar os arquivos localmente).
-5. Para visualizar o dashboard no Looker Studio, acessar o link indicado na seção 4.
+1. Acessar o notebook no Google Colab: [https://colab.research.google.com/drive/1jOEQQIPmq-Xvv4X6w1gjWUOdwYNoikUK?usp=drive_link](https://colab.research.google.com/drive/1jOEQQIPmq-Xvv4X6w1gjWUOdwYNoikUK?usp=drive_link)  
+2. Fazer upload do arquivo `Sample_Superstore.csv` na primeira célula (ou, alternativamente, subir o arquivo no ambiente do Colab e ajustar o caminho).  
+3. Executar as células sequencialmente (Ambiente de execução → Executar tudo).  
+4. Os gráficos serão exibidos inline e salvos automaticamente como arquivos `.png` (necessário fazer download se desejar os arquivos localmente).  
+5. Para visualizar o dashboard no Looker Studio, acessar o link indicado na seção 4.  
 6. Para clonar o repositório: `git clone [INSERIR URL DO REPO]`
 
+---
 
 ## 7. Descritivo dos arquivos enviados
 
-
+```text
 Daniela_Anjos_Desafio_Extra_DataScience.zip
 │
 ├── Daniela_Anjos_Desafio_Extra_DataScience.ipynb # Notebook principal
 ├── Sample_Superstore.csv # Dataset original
 ├── visualizacoes/ # Gráficos gerados (.png)
-│    ├──boxplot_outliers.png
-│    ├──desconto_lucro_subcategorias_deficitarias.png
-│    ├──desconto_lucro_subcategorias_lucrativas.png
-│    ├──desconto_vs_lucro.png
-│    ├──outliers_com_limites.png
-│    ├──tendencia_vendas_lucro.png
-│    ├──top10_clientes_lucro.png
-│    ├──vendas_lucro_por_subcategoria_por_lucro.png
-│    ├──vendas_mensais_por_categoria.png
-│    ├──vendas_mensais_por_segmento.png
-│    ├──vendas_por_categoria.png
-│    └──vendas_por_segmento.png
-└── Daniela_Anjos_Dashboard.pdf # Versão estática do dashboard
+│    ├── boxplot_outliers.png
+│    ├── desconto_lucro_subcategorias_deficitarias.png
+│    ├── desconto_lucro_subcategorias_lucrativas.png
+│    ├── desconto_vs_lucro.png
+│    ├── outliers_com_limites.png
+│    ├── tendencia_vendas_lucro.png
+│    ├── top10_clientes_lucro.png
+│    ├── vendas_lucro_por_subcategoria_por_lucro.png
+│    ├── vendas_mensais_por_categoria.png
+│    ├── vendas_mensais_por_segmento.png
+│    ├── vendas_por_categoria.png
+│    └── vendas_por_segmento.png
+├── Daniela_Anjos_Dashboard.pdf # Versão estática do dashboard
 ├── Daniela_Anjos_documentacao.txt # Este Arquivo
 └── README.md # Instruções rápidas
