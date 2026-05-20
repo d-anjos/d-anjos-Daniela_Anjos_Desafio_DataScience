@@ -38,9 +38,9 @@ Este projeto consiste em uma Análise Exploratória de Dados (AED) do dataset *S
 
 Daniela_Anjos_Desafio_Extra_DataScience.zip
 │
-├── Daniela_Anjos_Desafio_Extra_DataScience.ipynb # Notebook principal
-├── Sample_Superstore.csv # Dataset original
-├── visualizacoes/ # Gráficos gerados (.png)
+├──  Daniela_Anjos_Desafio_Extra_DataScience.ipynb # Notebook principal
+├──  Sample_Superstore.csv # Dataset original
+├──  visualizacoes/ # Gráficos gerados (.png)
 │    ├──boxplot_outliers.png
 │    ├──desconto_lucro_subcategorias_deficitarias.png
 │    ├──desconto_lucro_subcategorias_lucrativas.png
@@ -53,9 +53,9 @@ Daniela_Anjos_Desafio_Extra_DataScience.zip
 │    ├──vendas_mensais_por_segmento.png
 │    ├──vendas_por_categoria.png
 │    └──vendas_por_segmento.png
-└── Daniela_Anjos_Dashboard.pdf # Versão estática do dashboard
-├── Daniela_Anjos_documentacao.txt # Documentação completa do projeto
-└── README.md # Este arquivo
+└──  Daniela_Anjos_Dashboard.pdf # Versão estática do dashboard
+├──  Daniela_Anjos_documentacao.txt # Documentação completa do projeto
+└──  README.md # Este arquivo
 
 
 ---
